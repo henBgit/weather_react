@@ -7,13 +7,13 @@ export default function DaySquare({ dayData, onClose }) {
   return (
     <div className="day-square">
       <div className="day-square-header">
-        <h3>{new Date(date).toLocaleDateString('en-US', { weekday: 'short' })}</h3>
+        <h3 style={{color:'blue'}}>{new Date(date).toLocaleDateString('en-US', { weekday: 'long' })}</h3>
         <button className="close-button" onClick={onClose}>
           Close
         </button>
       </div>
       <div className="day-square-content">
-        <p className="temperature">Temperature: {Temperature}°</p>
+        <b className="temperature">Temperature: {Temperature}°</b>
         <div className="day-info">
           <h4>Day</h4>
           <img
@@ -30,7 +30,7 @@ export default function DaySquare({ dayData, onClose }) {
             </p>
           )}
         </div>
-        <hr />
+        <hr className="divider" />
         <div className="night-info">
           <h4>Night</h4>
           <img
@@ -40,9 +40,9 @@ export default function DaySquare({ dayData, onClose }) {
             }${Night.Icon}-s.png`}
             alt=""
           />
-          <p>Precipitation: {Night.HasPrecipitation ? 'Yes' : 'No'}</p>
+           <p className="precipitation">Precipitation: {Night.HasPrecipitation ? 'Yes' : 'No'}</p>
           {Night.HasPrecipitation && (
-            <p>
+            <p className="precipitation-details">
               Precipitation Type: {Night.PrecipitationType}, Intensity: {Night.PrecipitationIntensity}
             </p>
           )}

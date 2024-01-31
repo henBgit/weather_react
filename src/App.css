@@ -8,10 +8,58 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Add a media query for mobile devices */
 @media only screen and (max-width: 600px) {
   body {
     background-image: url('./back.jpg');
+  }
+  .day-square {
+    width: 100%; 
+    margin: 0; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .day-square-header {
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+
+  .close-button {
+    margin-top: 10px; 
+  }
+
+  .day-square-content {
+    flex-direction: column; 
+  }
+
+  .temperature {
+    font-size: 14px; 
+  }
+
+  .weather-icon {
+    max-width: 100%;
+    max-height: auto; 
+  }
+
+  .precipitation,
+  .precipitation-details {
+    font-size: 12px; 
+  }
+
+  .divider {
+    margin: 5px 0; 
+  }
+
+  .content-container {
+    padding: 10px; 
+  }
+
+  .day-cards-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .day-card {
+    width: 100%; 
   }
 }
 
@@ -113,15 +161,16 @@ body {
 
 
 .header-container {
+    margin-top: 50px ;
     background-color: #333;
     padding: 12px;
     color: #fff;
-    text-align: center;
+
   }
   
   .header-links {
     display: flex;
-    justify-content: center;
+   
   }
   
   .header-link {
@@ -153,7 +202,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin: 10px;
-    max-width: 300px;
+    width: 500px;
   }
   
   .day-square-header {
@@ -174,6 +223,7 @@ body {
   .day-square-content {
     margin-top: 10px;
     display: flex;
+  
   }
   
   .temperature {
@@ -191,4 +241,18 @@ body {
     max-height: 50px;
   }
   
-  
+  .precipitation,
+.precipitation-details {
+  margin: 5px 0;
+}
+.divider {
+  border: 0.5px solid #ccc;
+  margin: 10px 0;
+}
+
+.delete-btn{
+  font-weight:900;
+  font-size: 1rem;
+  border: none;
+  color: #e74c3c;
+}

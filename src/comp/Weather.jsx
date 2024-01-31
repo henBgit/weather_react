@@ -23,7 +23,7 @@ const Weather = () => {
   
     try {
       const weather = await apiLocationWeatherDaily(response.key);
-      console.log(weather);
+     
       setWeatherData({
         Temperature: weather.Temperature,
         WeatherText: weather.WeatherText,
@@ -52,7 +52,7 @@ const Weather = () => {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
       const isCityInFavorites = favorites.some(favorite => favorite.key === cityCode);
       if (!isCityInFavorites) {
-        console.log(weatherData);
+       
         localStorage.setItem('favorites', JSON.stringify([...favorites, { key: cityCode, name: cityName, temperature: weatherData.Temperature,icon:weatherData.icon }]));
         alert("City Has Been Added To Favorites");
       }else{
@@ -63,7 +63,7 @@ const Weather = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const selectedCity = location.state?.selectedCity || '';
+      const selectedCity = location.state?.selectedCity || 'Tel Aviv';
       if (selectedCity) {
         try {
           const cachedWeatherData = JSON.parse(localStorage.getItem(selectedCity));
@@ -109,6 +109,7 @@ console.log(weatherData);
           onBlur={(e) => handleInputChange(e.target.value)}
           placeholder="Enter city name"
           className="custom-input-class"
+          defaultValue="Tel Aviv"
         />
       </div>
       {weatherData && (
@@ -125,7 +126,6 @@ console.log(weatherData);
       <button className="add-to-favorites-btn" onClick={handleAddToFavorites}>
         Add to Favorites
       </button>
-      kj,jk
     </div>
   );
 };

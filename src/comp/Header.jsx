@@ -8,9 +8,12 @@ export default function Header() {
         <Link to={'/'} className="header-link">
           Home
         </Link>
+        &nbsp;
+      
         <Link to={'/fav'} className="header-link">
           Favorites
         </Link>
+      
       </div>
     </div>
   )
