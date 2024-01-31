@@ -6,9 +6,16 @@ const apiAutoComplete = async (q) => {
     const stringFetch = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}&language=en-us`;
     const response = await fetch(stringFetch);
     const data = await response.json();
+     
 
+    if (data && data.length > 0) { 
 
     return ({ key: data[0].Key, name: data[0].LocalizedName });
+
+    } else {
+        return null ;
+    }
+
 }
 
 const apiLocationWeatherDaily = async (LocationCode) => {

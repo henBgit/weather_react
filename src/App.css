@@ -189,11 +189,10 @@ body {
 
   
   .custom-input-class {
-    /* Add your custom styling here */
     border: 1px solid #ccc;
     padding: 5px;
     width: 400px;
-    /* Add more styles as needed */
+  
   }
 
   .day-square {

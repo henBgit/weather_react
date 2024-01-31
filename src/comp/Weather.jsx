@@ -18,6 +18,11 @@ const Weather = () => {
     const inputCityName = value;
     if(value === '') return;
     const response = await apiAutoComplete(inputCityName);
+    if ( !response || !response.key || !response.name){
+      alert( 'Invalid response from autocomplete API:', JSON.stringify(response)); 
+
+      return;
+    }
     setCityCode(response.key);
     setCityName(response.name);
   
