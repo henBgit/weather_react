@@ -125,6 +125,7 @@ console.log(weatherData);
       <button className="add-to-favorites-btn" onClick={handleAddToFavorites}>
         Add to Favorites
       </button>
+      kj,jk
     </div>
   );
 };
