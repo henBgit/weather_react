@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DaySquare from './DaySquare';
 
 export default function Content({ cityName, temperature, dayscraft, weatherText, weatherIcon }) {
+  
   const [selectedDay, setSelectedDay] = useState(null);
 
   const handleDayClick = (day) => {

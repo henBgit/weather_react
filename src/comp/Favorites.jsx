@@ -1,8 +1,8 @@
-// Favorites.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Favorites = () => {
+
   const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
@@ -37,6 +37,7 @@ const Favorites = () => {
                 alt=""
               />
               <b>{favorite.temperature} °</b> &nbsp;&nbsp;&nbsp;
+
               <button className="delete-btn" onClick={() => handleDeleteClick(index)}>
                X
             </button>

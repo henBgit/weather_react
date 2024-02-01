@@ -2,6 +2,7 @@ import React from 'react';
 
 
 export default function DaySquare({ dayData, onClose }) {
+  
   const { date, Temperature, Day, Night } = dayData;
 
   return (

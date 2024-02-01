@@ -16,23 +16,23 @@ const Weather = () => {
 
   const handleInputChange = async (value) => {
     const inputCityName = value;
-    if(value === '') return;
+    if (value === '') return;
     const response = await apiAutoComplete(inputCityName);
-    if ( !response || !response.key || !response.name){
-      alert( 'Invalid response from autocomplete API:', JSON.stringify(response)); 
+    if (!response || !response.key || !response.name) {
+      alert('Invalid response from autocomplete API:', JSON.stringify(response));
 
       return;
     }
     setCityCode(response.key);
     setCityName(response.name);
-  
+
     try {
       const weather = await apiLocationWeatherDaily(response.key);
-     
+
       setWeatherData({
         Temperature: weather.Temperature,
         WeatherText: weather.WeatherText,
-        icon:weather.WeatherIcon,
+        icon: weather.WeatherIcon,
       });
       const weatherFiveDays = await apilocationWeatherFiveDays(response.key);
       setWeatherDataFive(weatherFiveDays);
@@ -50,17 +50,17 @@ const Weather = () => {
       console.error('Error fetching weather data:', error);
     }
   };
-  
+
 
   const handleAddToFavorites = () => {
     if (cityCode && cityName) {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
       const isCityInFavorites = favorites.some(favorite => favorite.key === cityCode);
       if (!isCityInFavorites) {
-       
-        localStorage.setItem('favorites', JSON.stringify([...favorites, { key: cityCode, name: cityName, temperature: weatherData.Temperature,icon:weatherData.icon }]));
+
+        localStorage.setItem('favorites', JSON.stringify([...favorites, { key: cityCode, name: cityName, temperature: weatherData.Temperature, icon: weatherData.icon }]));
         alert("City Has Been Added To Favorites");
-      }else{
+      } else {
         alert("City is Allready in Favorites");
       }
     }
@@ -83,10 +83,13 @@ const Weather = () => {
             const autoCompleteResponse = await apiAutoComplete(selectedCity);
             setCityCode(autoCompleteResponse.key);
             setCityName(autoCompleteResponse.name);
+
             const weather = await apiLocationWeatherDaily(autoCompleteResponse.key);
             setWeatherData(weather);
+
             const weatherFiveDays = await apilocationWeatherFiveDays(autoCompleteResponse.key);
             setWeatherDataFive(weatherFiveDays);
+            
             localStorage.setItem(selectedCity, JSON.stringify({
               cityCode: autoCompleteResponse.key,
               cityName: autoCompleteResponse.name,
@@ -105,7 +108,6 @@ const Weather = () => {
   }, [location.state?.selectedCity]);
 
 
-console.log(weatherData);
   return (
     <div className="weather-container">
       <div className="input-container">
