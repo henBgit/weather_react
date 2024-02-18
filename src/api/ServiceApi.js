@@ -3,7 +3,7 @@ const API_KEY = 'Gow8f5nz0pI33CbN7EAooQc7klLrWdQ8';
 
 const apiAutoComplete = async (q) => {
  
-    const stringFetch = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}&language=en-us`;
+    const stringFetch = `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${q}&language=en-us`;
     const response = await fetch(stringFetch);
     const data = await response.json();
      
@@ -20,7 +20,7 @@ const apiAutoComplete = async (q) => {
 
 const apiLocationWeatherDaily = async (LocationCode) => {
    
-    const stringFetch = `http://dataservice.accuweather.com/currentconditions/v1/${LocationCode}?apikey=${API_KEY}&language=en-us&details=true`; // Set details=true to include WeatherText
+    const stringFetch = `https://dataservice.accuweather.com/currentconditions/v1/${LocationCode}?apikey=${API_KEY}&language=en-us&details=true`; // Set details=true to include WeatherText
     const response = await fetch(stringFetch);
     const data = await response.json();
 
@@ -35,7 +35,7 @@ const apiLocationWeatherDaily = async (LocationCode) => {
 
 const apilocationWeatherFiveDays = async (LocationCode) => {
 
-    const stringFetch = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${LocationCode}?apikey=${API_KEY}&language=en-us&details=false&metric=true`
+    const stringFetch = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${LocationCode}?apikey=${API_KEY}&language=en-us&details=false&metric=true`
     const response = await fetch(stringFetch);
     const data = await response.json();
 
