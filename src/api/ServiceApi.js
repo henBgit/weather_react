@@ -1,4 +1,4 @@
-const API_KEY = 'WFlTwaxGi0jZYveAT9fFhlCVq0pgwQ9A';
+const API_KEY = 'Gow8f5nz0pI33CbN7EAooQc7klLrWdQ8';
 
 
 const apiAutoComplete = async (q) => {
@@ -47,6 +47,13 @@ const apilocationWeatherFiveDays = async (LocationCode) => {
     });
   
     return result;
+
+
+
+
+
+
+    
 }
 
 module.exports = { apilocationWeatherFiveDays, apiLocationWeatherDaily, apiAutoComplete }
