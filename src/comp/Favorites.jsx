@@ -22,7 +22,7 @@ const Favorites = () => {
                 </Typography>
                 <img
                   src={`https://developer.accuweather.com/sites/default/files/${favorite.icon < 10 ? '0' : ''}${favorite.icon}-s.png`}
-                  alt="weather icon"
+                  alt=""
                   style={{ width: '50px', height: '50px', marginTop: '10px' }}
                 />
               </CardContent>
