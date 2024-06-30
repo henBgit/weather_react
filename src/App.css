@@ -6,7 +6,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden; 
 }
 
 .app-container {
@@ -18,18 +18,21 @@ body {
 }
 
 .weather-container {
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0); 
   margin-top: 50px;
-  border-radius: 8px; /* Optional: Add rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  border-radius: 8px; 
 }
+
 .weather-card {
-  
-  border-radius: 8px;
-  padding: 16px;
-  margin: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  background: inherit;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .day-cards-container {
@@ -39,7 +42,6 @@ body {
 }
 
 .day-card {
-  
   border-radius: 8px;
   padding: 16px;
   margin: 8px;
@@ -48,17 +50,18 @@ body {
 }
 
 .day-square {
-  
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin: 10px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .day-square-content {
   margin-top: 10px;
   display: flex;
+  flex-direction: column; 
 }
 
 .weather-icon {
@@ -85,11 +88,38 @@ body {
   background-color: #e0e0e0;
 }
 
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+}
 
+.favorite-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.favorite-button:hover {
+  background-color: #0056b3;
+}
 
 @media (max-width: 600px) {
   body {
+    margin: 0;
+    padding: 0;
     background-image: url('./back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden; 
   }
 
   .app-container,
@@ -128,43 +158,4 @@ body {
   .day-card {
     width: 100%;
   }
-}
-.weather-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
- 
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-.weather-card {
-  background: inherit;
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
- 
-}
-
-.favorite-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.favorite-button:hover {
-  background-color: #0056b3;
 }

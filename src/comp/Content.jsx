@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Typography, Card, CardContent, CardActions, Button, Grid , Box } from '@mui/material';
+import { Typography, Card, CardContent, Grid  } from '@mui/material';
 import DaySquare from './DaySquare';
 
 export default function Content({ cityName, temperature, dayscraft, weatherText, weatherIcon }) {
@@ -20,7 +20,7 @@ export default function Content({ cityName, temperature, dayscraft, weatherText,
       <Typography variant="h4" component="div">{cityName}</Typography>
       <div className="temperature-container">
         <Typography variant="h3">{temperature}°</Typography>
-        <img
+        <img 
           src={`https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? '0' : ''}${weatherIcon}-s.png`}
           alt=""
         />
