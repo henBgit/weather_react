@@ -13,14 +13,12 @@ const Weather = () => {
   const [weatherDataFive, setWeatherDataFive] = useState([]);
   const location = useLocation();
 
-
   const handleInputChange = async (value) => {
     const inputCityName = value;
     if (value === '') return;
     const response = await apiAutoComplete(inputCityName);
     if (!response || !response.key || !response.name) {
       alert('Invalid response from autocomplete API:', JSON.stringify(response));
-
       return;
     }
     setCityCode(response.key);
@@ -28,7 +26,6 @@ const Weather = () => {
 
     try {
       const weather = await apiLocationWeatherDaily(response.key);
-
       setWeatherData({
         Temperature: weather.Temperature,
         WeatherText: weather.WeatherText,
@@ -42,7 +39,7 @@ const Weather = () => {
         weatherData: {
           Temperature: weather.Temperature,
           WeatherText: weather.WeatherText,
-          icon: weather.WeatherIcon
+          icon: weather.WeatherIcon,
         },
         weatherDataFive: weatherFiveDays,
       }));
@@ -51,17 +48,15 @@ const Weather = () => {
     }
   };
 
-
   const handleAddToFavorites = () => {
     if (cityCode && cityName) {
       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
       const isCityInFavorites = favorites.some(favorite => favorite.key === cityCode);
       if (!isCityInFavorites) {
-
         localStorage.setItem('favorites', JSON.stringify([...favorites, { key: cityCode, name: cityName, temperature: weatherData.Temperature, icon: weatherData.icon }]));
         alert("City Has Been Added To Favorites");
       } else {
-        alert("City is Allready in Favorites");
+        alert("City is Already in Favorites");
       }
     }
   };
@@ -107,18 +102,15 @@ const Weather = () => {
 
   }, [location.state?.selectedCity]);
 
-
   return (
     <div className="weather-container">
-      <div className="input-container">
-        <input
-          type="text"
-          onBlur={(e) => handleInputChange(e.target.value)}
-          placeholder="Enter city name"
-          className="custom-input-class"
-          defaultValue="Tel Aviv"
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Enter city name"
+        onBlur={(e) => handleInputChange(e.target.value)}
+        defaultValue="Tel Aviv"
+        className="input-field"
+      />
       {weatherData && (
         <div className="weather-card">
           <Content
@@ -130,10 +122,14 @@ const Weather = () => {
           />
         </div>
       )}
-      <button className="add-to-favorites-btn" onClick={handleAddToFavorites}>
+      <button
+        onClick={handleAddToFavorites}
+        className="favorite-button"
+      >
         Add to Favorites
       </button>
     </div>
   );
 };
+
 export default Weather;

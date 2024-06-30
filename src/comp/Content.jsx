@@ -1,4 +1,6 @@
+
 import React, { useState } from 'react';
+import { Typography, Card, CardContent, CardActions, Button, Grid , Box } from '@mui/material';
 import DaySquare from './DaySquare';
 
 export default function Content({ cityName, temperature, dayscraft, weatherText, weatherIcon }) {
@@ -15,24 +17,29 @@ export default function Content({ cityName, temperature, dayscraft, weatherText,
 
   return (
     <div className="content-container">
-      <p >{cityName}</p>
+      <Typography variant="h4" component="div">{cityName}</Typography>
       <div className="temperature-container">
-        <b>{temperature}°</b>
+        <Typography variant="h3">{temperature}°</Typography>
         <img
           src={`https://developer.accuweather.com/sites/default/files/${weatherIcon < 10 ? '0' : ''}${weatherIcon}-s.png`}
           alt=""
         />
-        {weatherText && <p>{weatherText}</p>}
+        {weatherText && <Typography variant="subtitle1">{weatherText}</Typography>}
       </div>
-      <div className="day-cards-container">
+      <Grid container spacing={2} className="day-cards-container">
         {dayscraft.map((day, index) => (
-          <div key={index} className="day-card" onClick={() => handleDayClick(day)}>
-            <p>{new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' })}</p>
-            <p>{day.Temperature}°</p>
-          </div>
+          <Grid item key={index} xs={12} sm={6} md={4}>
+            <Card onClick={() => handleDayClick(day)} className="day-card">
+              <CardContent>
+                <Typography variant="h6">{new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' })}</Typography>
+                <Typography variant="h5">{day.Temperature}°</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </div>
+      </Grid>
       {selectedDay && <DaySquare dayData={selectedDay} onClose={handleCloseDaySquare} />}
     </div>
   );
 }
+    

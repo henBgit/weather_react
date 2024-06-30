@@ -1,54 +1,43 @@
-import React from 'react';
 
+import React from 'react';
+import { Card, CardContent, CardActions, Button, Typography, Box } from '@mui/material';
 
 export default function DaySquare({ dayData, onClose }) {
   
   const { date, Temperature, Day, Night } = dayData;
 
   return (
-    <div className="day-square">
-      <div className="day-square-header">
-        <h3 style={{color:'blue'}}>{new Date(date).toLocaleDateString('en-US', { weekday: 'long' })}</h3>
-        <button className="close-button" onClick={onClose}>
+    <Card className="day-square">
+      <CardContent>
+        <Typography variant="h5" color="primary">
+          {new Date(date).toLocaleDateString('en-US', { weekday: 'long' })}
+        </Typography>
+        <Button onClick={onClose} variant="contained" color="secondary">
           Close
-        </button>
-      </div>
-      <div className="day-square-content">
-        <b className="temperature">Temperature: {Temperature}°</b>
-        <div className="day-info">
-          <h4>Day</h4>
-          <img
-            className="weather-icon"
-            src={`https://developer.accuweather.com/sites/default/files/${
-              Day.Icon < 10 ? '0' : ''
-            }${Day.Icon}-s.png`}
-            alt=""
-          />
-          <p>Precipitation: {Day.HasPrecipitation ? 'Yes' : 'No'}</p>
-          {Day.HasPrecipitation && (
-            <p>
-              Precipitation Type: {Day.PrecipitationType}, Intensity: {Day.PrecipitationIntensity}
-            </p>
-          )}
+        </Button>
+        <div className="day-square-content">
+          <Typography variant="h6">Temperature: {Temperature}°</Typography>
+          <div className="day-info">
+            <Typography variant="subtitle1">Day</Typography>
+            <img
+              className="weather-icon"
+              src={`https://developer.accuweather.com/sites/default/files/${Day.Icon < 10 ? '0' : ''}${Day.Icon}-s.png`}
+              alt=""
+            />
+            <Typography>{Day.IconPhrase}</Typography>
+          </div>
+          <div className="night-info">
+            <Typography variant="subtitle1">Night</Typography>
+            <img
+              className="weather-icon"
+              src={`https://developer.accuweather.com/sites/default/files/${Night.Icon < 10 ? '0' : ''}${Night.Icon}-s.png`}
+              alt=""
+            />
+            <Typography>{Night.IconPhrase}</Typography>
+          </div>
         </div>
-        <hr className="divider" />
-        <div className="night-info">
-          <h4>Night</h4>
-          <img
-            className="weather-icon"
-            src={`https://developer.accuweather.com/sites/default/files/${
-              Night.Icon < 10 ? '0' : ''
-            }${Night.Icon}-s.png`}
-            alt=""
-          />
-           <p className="precipitation">Precipitation: {Night.HasPrecipitation ? 'Yes' : 'No'}</p>
-          {Night.HasPrecipitation && (
-            <p className="precipitation-details">
-              Precipitation Type: {Night.PrecipitationType}, Intensity: {Night.PrecipitationIntensity}
-            </p>
-          )}
-        </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
+    

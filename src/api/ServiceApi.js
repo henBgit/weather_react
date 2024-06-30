@@ -48,11 +48,6 @@ const apilocationWeatherFiveDays = async (LocationCode) => {
   
     return result;
 
-
-
-
-
-
     
 }
 
