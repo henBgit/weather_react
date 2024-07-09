@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="app-container">
       <CssBaseline />
-      <Router>
+   
         <Header />
     
           <Routes>
@@ -19,7 +19,7 @@ function App() {
             
           </Routes>
        
-      </Router>
+    
     </div>
   );
 }
